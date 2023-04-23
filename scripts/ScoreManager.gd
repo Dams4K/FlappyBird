@@ -19,7 +19,6 @@ func _ready():
 
 func update_score():
 	emit_signal("score_changed")
-	print(score)
 	if score > best_score:
 		best_score = score
 		save_best_score()

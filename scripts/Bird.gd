@@ -32,7 +32,6 @@ func is_falling() -> bool:
 
 
 func _on_Bird_body_entered(body):
-	print(body)
 	if not ded:
 		ded = true
 		animatedSprite2D.stop()

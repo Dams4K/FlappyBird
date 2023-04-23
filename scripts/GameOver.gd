@@ -12,7 +12,6 @@ func _ready():
 
 func show_gameover():
 	container.show()
-	print("show")
 	scoreLabel.text = "Score: " + str(ScoreManager.score)
 	bestScoreLabel.text = "Best Score: " + str(ScoreManager.best_score)
 

@@ -10,7 +10,7 @@ func _ready():
 
 
 func _input(event):
-	if event is InputEventKey:
+	if Input.is_action_just_pressed("jump"):
 		get_tree().paused = false
 
 

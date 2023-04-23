@@ -65,7 +65,6 @@ mass = 5.0
 gravity_scale = 1.4
 max_contacts_reported = 1
 contact_monitor = true
-lock_rotation = true
 script = ExtResource("1_2d37g")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
