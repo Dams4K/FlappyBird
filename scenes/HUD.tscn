@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://cljv1oi5kjh5p"]
+
+[ext_resource type="Script" path="res://scripts/ScoreContainer.gd" id="1_54tn7"]
+[ext_resource type="Texture2D" uid="uid://cy8g61gnyahuq" path="res://assets/sprites/0.png" id="1_xh32i"]
+
+[node name="HUD" type="CanvasLayer"]
+script = null
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -12.0
+script = null
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScoreContainer" type="HBoxContainer" parent="Control"]
+anchor_right = 1.0
+offset_bottom = 36.0
+alignment = 1
+script = ExtResource( "1_54tn7" )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Control/ScoreContainer"]
+use_parent_material = true
+offset_left = 127.0
+offset_right = 151.0
+offset_bottom = 36.0
+texture = ExtResource( "1_xh32i" )
+script = null

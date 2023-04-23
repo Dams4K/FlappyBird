@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://bsw6qsqsmw55"]
+
+[ext_resource type="Texture2D" uid="uid://bvjdk55oj1npn" path="res://assets/sprites/background-day.png" id="1_8udnf"]
+[ext_resource type="PackedScene" uid="uid://jo2nxsk2tfvn" path="res://scenes/Bird.tscn" id="1_gwdw8"]
+[ext_resource type="Script" path="res://scripts/Game.gd" id="1_slsxl"]
+[ext_resource type="Script" path="res://scripts/BaseStaticBody.gd" id="3_nfqgs"]
+[ext_resource type="Texture2D" uid="uid://umm3dcdh4e8v" path="res://assets/sprites/base.png" id="5_13hmy"]
+[ext_resource type="PackedScene" uid="uid://cljv1oi5kjh5p" path="res://scenes/HUD.tscn" id="6_1vb1u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_58i6g"]
+size = Vector2(376, 112)
+
+[node name="Game" type="Node2D"]
+process_mode = 1
+script = ExtResource("1_slsxl")
+
+[node name="BackgroundsSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_8udnf")
+centered = false
+
+[node name="Bird" parent="." instance=ExtResource("1_gwdw8")]
+position = Vector2(45, 268)
+
+[node name="Pipes" type="Node2D" parent="."]
+
+[node name="BaseStaticBody" type="StaticBody2D" parent="."]
+position = Vector2(188, 448)
+script = ExtResource("3_nfqgs")
+
+[node name="BaseSprite" type="Sprite2D" parent="BaseStaticBody"]
+texture_repeat = 2
+texture = ExtResource("5_13hmy")
+region_enabled = true
+region_rect = Rect2(0, 0, 376, 112)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BaseStaticBody"]
+shape = SubResource("RectangleShape2D_58i6g")
+
+[node name="PipesSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(314, 256)
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 1.5
+autostart = true
+
+[node name="HUD" parent="." instance=ExtResource("6_1vb1u")]
+
+[connection signal="is_ded" from="Bird" to="." method="_on_Bird_is_ded"]
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]

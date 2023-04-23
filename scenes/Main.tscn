@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://jk2rsj1shnuh"]
+
+[ext_resource type="Script" path="res://scripts/Main.gd" id="1_7nln0"]
+[ext_resource type="PackedScene" uid="uid://bsw6qsqsmw55" path="res://scenes/Game.tscn" id="2_6cf67"]
+[ext_resource type="PackedScene" path="res://scenes/SceneTransition.tscn" id="3_d2js3"]
+[ext_resource type="PackedScene" uid="uid://o84iuvgkmoo" path="res://scenes/GameOver.tscn" id="4_tkk1h"]
+
+[node name="Main" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7nln0")
+
+[node name="Game" parent="." instance=ExtResource("2_6cf67")]
+
+[node name="SceneTransition" parent="." instance=ExtResource("3_d2js3")]
+process_mode = 3
+
+[node name="GameOver" parent="." instance=ExtResource("4_tkk1h")]
+layer = 10
+
+[connection signal="game_over" from="Game" to="." method="_on_Game_game_over"]
+[connection signal="retry" from="GameOver" to="." method="_on_game_over_retry"]
